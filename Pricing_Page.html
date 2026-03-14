@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Work With Me — Islamiyat Boluwatife</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9973A;--gold2:#FFD700;--gold-light:#F5DFA0;
+  --dark:#080808;--dark2:#0f0f0f;--dark3:#161616;--dark4:#1e1e1e;
+  --white:#F8F8F8;--muted:#555;--green:#3EC97A;--red:#E05252;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--dark);color:var(--white);
+  font-family:'Barlow',sans-serif;overflow-x:hidden;
+}
+
+/* GRID BG */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,151,58,.03) 59px,rgba(201,151,58,.03) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(201,151,58,.03) 59px,rgba(201,151,58,.03) 60px);
+}
+
+/* HERO */
+.hero{
+  position:relative;z-index:1;
+  min-height:56vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 60px;
+  background:radial-gradient(ellipse 100% 70% at 50% 0%,#1f1300 0%,transparent 70%);
+  border-bottom:1px solid #1a1a1a;
+}
+.hero-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:6px;color:var(--gold);text-transform:uppercase;
+  background:rgba(201,151,58,.08);border:1px solid rgba(201,151,58,.25);
+  padding:7px 22px;display:inline-block;margin-bottom:28px;
+}
+.hero-title{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(52px,11vw,120px);line-height:.88;
+  letter-spacing:-3px;margin-bottom:20px;
+  background:linear-gradient(160deg,#FFF3A0 0%,#C9973A 45%,#6e3e0f 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(16px,2vw,21px);color:#AAAAAA;
+  max-width:520px;line-height:1.7;margin:0 auto;
+}
+
+/* SECTION */
+.section{position:relative;z-index:1;padding:80px 24px;}
+.wrap{max-width:1060px;margin:0 auto;}
+.sec-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:5px;color:var(--gold);text-transform:uppercase;
+  text-align:center;margin-bottom:12px;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);
+  font-weight:700;text-align:center;line-height:1.2;margin-bottom:8px;
+}
+.sec-note{font-size:15px;color:var(--muted);text-align:center;margin-bottom:52px;}
+.divider{width:50px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));margin:0 auto 52px;}
+
+/* PRICING GRID */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+@media(max-width:860px){.pricing-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
+
+/* CARD */
+.card{
+  background:var(--dark3);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:transform .25s;
+}
+.card:hover{transform:translateY(-4px);}
+.card.featured{background:linear-gradient(170deg,#1a1100,#0d0900);border:1px solid rgba(201,151,58,.5);}
+.card.featured::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(201,151,58,.07),transparent 60%);
+  pointer-events:none;
+}
+
+/* FEATURED BADGE */
+.feat-badge{
+  position:absolute;top:0;left:0;right:0;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:900;letter-spacing:3px;
+  text-transform:uppercase;text-align:center;padding:7px;
+}
+
+/* CARD HEAD */
+.card-head{
+  padding:36px 32px 28px;
+  border-bottom:1px solid #1e1e1e;
+}
+.card.featured .card-head{padding-top:52px;}
+.card-tier{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:10px;
+}
+.card-name{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(22px,3vw,30px);letter-spacing:1px;
+  text-transform:uppercase;color:var(--white);margin-bottom:14px;line-height:1.1;
+}
+.card-desc{font-size:14px;color:#888;line-height:1.65;margin-bottom:24px;}
+
+/* PRICE BLOCK */
+.price-block{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
+.price-currency{
+  font-family:'Barlow Condensed',sans-serif;font-size:24px;
+  font-weight:700;color:var(--gold);
+}
+.price-amount{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(52px,6vw,68px);line-height:1;
+  color:var(--gold);
+}
+.price-was{
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;
+  color:var(--muted);text-decoration:line-through;margin-left:4px;
+}
+.price-note{font-size:13px;color:var(--muted);}
+.price-note strong{color:var(--green);}
+
+/* CARD BODY */
+.card-body{padding:28px 32px;flex:1;display:flex;flex-direction:column;}
+.includes-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+  margin-bottom:16px;
+}
+.feature-list{list-style:none;flex:1;margin-bottom:28px;}
+.feature-list li{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:9px 0;border-bottom:1px solid #111;
+  font-size:14px;color:#CCCCCC;line-height:1.5;
+}
+.feature-list li:last-child{border-bottom:none;}
+.f-dot{
+  width:18px;height:18px;border-radius:50%;
+  background:rgba(201,151,58,.12);border:1px solid rgba(201,151,58,.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.f-dot::after{
+  content:'';width:6px;height:6px;
+  background:var(--gold);border-radius:50%;
+}
+.feature-list li.highlight .f-dot{
+  background:rgba(201,151,58,.25);border-color:var(--gold);
+}
+.feature-list li.highlight{color:var(--white);}
+.feature-list li.highlight span{font-weight:600;}
+
+/* BONUS TAG */
+.bonus-tag{
+  display:inline-block;
+  background:rgba(62,201,122,.1);border:1px solid rgba(62,201,122,.3);
+  color:var(--green);font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  padding:2px 8px;margin-left:6px;vertical-align:middle;
+}
+
+/* CTA */
+.card-cta{margin-top:auto;}
+.btn{
+  display:block;width:100%;text-align:center;
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;
+  font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  padding:15px 24px;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-gold{
+  background:linear-gradient(135deg,#C9973A,#FFD700);color:#000;
+  box-shadow:0 4px 24px rgba(201,151,58,.25);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,151,58,.4);}
+.btn-outline{
+  border:1px solid rgba(201,151,58,.4);color:var(--gold);
+  background:transparent;
+}
+.btn-outline:hover{border-color:var(--gold);background:rgba(201,151,58,.06);}
+.btn-note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin-top:16px;}
+.compare{width:100%;border-collapse:collapse;font-size:14px;}
+.compare th{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  padding:14px 20px;background:var(--dark4);text-align:left;
+  border-bottom:2px solid rgba(201,151,58,.2);
+}
+.compare th:not(:first-child){text-align:center;}
+.compare td{
+  padding:13px 20px;color:#CCCCCC;
+  border-bottom:1px solid #111;
+}
+.compare td:not(:first-child){text-align:center;}
+.compare tr:hover td{background:rgba(201,151,58,.02);}
+.compare .check{color:var(--gold);font-size:16px;}
+.compare .cross{color:#333;font-size:16px;}
+.compare .partial{color:var(--muted);font-size:13px;}
+.compare tr td:first-child{color:var(--white);font-size:14px;}
+.compare .cat-row td{
+  background:var(--dark2);color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  padding:10px 20px;
+}
+
+/* FAQ */
+.faq{max-width:680px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:20px 0;}
+.faq-q{
+  font-family:'Barlow Condensed',sans-serif;font-size:17px;
+  font-weight:700;color:var(--white);letter-spacing:.5px;
+  cursor:pointer;display:flex;justify-content:space-between;
+  align-items:center;gap:16px;
+}
+.faq-q::after{
+  content:'+';color:var(--gold);font-size:22px;flex-shrink:0;
+  transition:transform .2s;
+}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{
+  font-size:14px;color:#888;line-height:1.7;
+  max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;
+}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px;}
+
+/* CONTACT STRIP */
+.contact-strip{
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,#1a1000,#080800);
+  border-top:1px solid rgba(201,151,58,.15);
+  border-bottom:1px solid rgba(201,151,58,.15);
+  padding:52px 24px;text-align:center;
+}
+.contact-title{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(28px,5vw,52px);letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+}
+.contact-sub{font-size:15px;color:#888;margin-bottom:28px;}
+.contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.contact-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Barlow Condensed',sans-serif;font-size:14px;
+  font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;color:var(--white);
+  border:1px solid #2a2a2a;padding:12px 24px;
+  transition:border-color .2s,color .2s;
+}
+.contact-link:hover{border-color:var(--gold);color:var(--gold);}
+
+/* FOOTER */
+.foot{
+  position:relative;z-index:1;
+  padding:28px 24px;text-align:center;border-top:1px solid #111;
+}
+.foot p{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;
+  letter-spacing:3px;color:var(--muted);text-transform:uppercase;
+}
+
+/* STICKY */
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(8,8,8,.97);border-top:1px solid rgba(201,151,58,.15);
+  padding:12px 24px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;backdrop-filter:blur(12px);
+}
+.sticky-t{font-size:13px;color:#888;}
+.sticky-t strong{color:var(--white);}
+@media(max-width:500px){.sticky{flex-direction:column;text-align:center;}}
+.sticky-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.sticky-btn{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:900;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  padding:8px 18px;
+}
+.sticky-btn.g{background:linear-gradient(135deg,#C9973A,#FFD700);color:#000;}
+.sticky-btn.o{border:1px solid rgba(201,151,58,.4);color:var(--gold);}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <div class="sticky-t"><strong>Islamiyat Boluwatife</strong> &nbsp;·&nbsp; Certified Digital Marketer</div>
+  <div class="sticky-links">
+    <a href="https://selar.com/552q24353g" class="sticky-btn g">₦15k — Ebook + Coaching</a>
+    <a href="https://bit.ly/4sLJHI0" class="sticky-btn o">₦30k — Pro Class</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Islamiyat Boluwatife · Certified Digital Marketer</div>
+  <h1 class="hero-title">WORK<br/>WITH ME</h1>
+  <p class="hero-sub">Choose the level that matches where you are — and where you're going. Every tier delivers real, actionable results.</p>
+</div>
+
+<!-- PRICING -->
+<div class="section">
+  <div class="wrap">
+    <div class="sec-eyebrow">Choose Your Level</div>
+    <h2 class="sec-title">3 Ways to Work Together</h2>
+    <p class="sec-note">From your first steps to full private coaching — there's a tier for every stage.</p>
+
+    <div class="pricing-grid">
+
+      <!-- TIER 1 -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-tier">Tier 01 — Starter</div>
+          <div class="card-name">AMPISF Ebook<br/>+ Coaching Bonus</div>
+          <div class="card-desc">The complete affiliate marketing formula plus 2 days of direct coaching access. Your fastest route from zero to first commission.</div>
+          <div class="price-block">
+            <span class="price-currency">₦</span>
+            <span class="price-amount">15,000</span>
+          </div>
+          <div class="price-note">One-time · Instant access · <strong>Includes 2-day bonus coaching</strong></div>
+        </div>
+        <div class="card-body">
+          <div class="includes-label">What's included</div>
+          <ul class="feature-list">
+            <li class="highlight"><div class="f-dot"></div><span>AMPISF Ebook — full digital download</span></li>
+            <li class="highlight"><div class="f-dot"></div><span>2-day coaching access <span class="bonus-tag">Bonus</span></span></li>
+            <li><div class="f-dot"></div>The 6-step passive income formula</li>
+            <li><div class="f-dot"></div>WhatsApp traffic system explained</li>
+            <li><div class="f-dot"></div>Top 50 products that sell in Nigeria</li>
+            <li><div class="f-dot"></div>20 ready-to-send swipe messages</li>
+            <li><div class="f-dot"></div>30-day action plan</li>
+            <li><div class="f-dot"></div>Payment methods for Nigerian affiliates</li>
+          </ul>
+          <div class="card-cta">
+            <a href="https://selar.com/552q24353g" class="btn btn-outline">Buy on Selar — ₦15,000 →</a>
+            <div class="btn-note">Delivered instantly after payment</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 2 — FEATURED -->
+      <div class="card featured">
+        <div class="feat-badge">⭐ Most Popular</div>
+        <div class="card-head">
+          <div class="card-tier">Tier 02 — Pro</div>
+          <div class="card-name">Affiliate Marketing<br/>Pro Class</div>
+          <div class="card-desc">The complete 7-module coaching system. From mindset to passive income automation, scaling, and getting paid consistently every month.</div>
+          <div class="price-block">
+            <span class="price-currency">₦</span>
+            <span class="price-amount">25,000</span>
+            <span class="price-was">₦30,000</span>
+          </div>
+          <div class="price-note"><strong>Early bird — first 10 enrollees only</strong></div>
+        </div>
+        <div class="card-body">
+          <div class="includes-label">What's included</div>
+          <ul class="feature-list">
+            <li class="highlight"><div class="f-dot"></div><span>7 complete coaching modules</span></li>
+            <li class="highlight"><div class="f-dot"></div><span>The AMPISF formula — full system</span></li>
+            <li class="highlight"><div class="f-dot"></div><span>WhatsApp + Instagram + TikTok strategy</span></li>
+            <li><div class="f-dot"></div>Passive income system setup</li>
+            <li><div class="f-dot"></div>Follow-up sequence that doubles conversions</li>
+            <li><div class="f-dot"></div>Scale from ₦10k to ₦400k/month roadmap</li>
+            <li><div class="f-dot"></div>Sub-affiliate recruitment strategy</li>
+            <li><div class="f-dot"></div>30-day pro action plan</li>
+            <li><div class="f-dot"></div>Every Nigerian payment method explained</li>
+            <li class="highlight"><div class="f-dot"></div><span>Email access to Islamiyat during class</span></li>
+          </ul>
+          <div class="card-cta">
+            <a href="https://bit.ly/4sLJHI0" class="btn btn-gold">Enroll Now — ₦25,000 →</a>
+            <div class="btn-note">⚡ Price returns to ₦30,000 after 10 spots</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-tier">Tier 03 — Private</div>
+          <div class="card-name">1-on-1<br/>Private Coaching</div>
+          <div class="card-desc">Personalised, private coaching built entirely around your goals, your niche, and your current situation. The fastest path to consistent income.</div>
+          <div class="price-block">
+            <span class="price-currency">₦</span>
+            <span class="price-amount">75,000+</span>
+          </div>
+          <div class="price-note">Custom pricing based on scope · DM to inquire</div>
+        </div>
+        <div class="card-body">
+          <div class="includes-label">What's included</div>
+          <ul class="feature-list">
+            <li class="highlight"><div class="f-dot"></div><span>Fully personalised 1-on-1 sessions</span></li>
+            <li class="highlight"><div class="f-dot"></div><span>Custom strategy built for your niche</span></li>
+            <li><div class="f-dot"></div>Direct WhatsApp access to Islamiyat</li>
+            <li><div class="f-dot"></div>Account & profile review and setup</li>
+            <li><div class="f-dot"></div>Content review and feedback</li>
+            <li><div class="f-dot"></div>Live product selection and funnel setup</li>
+            <li><div class="f-dot"></div>Weekly check-in calls</li>
+            <li><div class="f-dot"></div>Everything in Pro Class included</li>
+          </ul>
+          <div class="card-cta">
+            <a href="https://wa.me/2349011480531" class="btn btn-outline">DM to Inquire on WhatsApp →</a>
+            <div class="btn-note">Limited spots · Apply to confirm availability</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-eyebrow">Compare Tiers</div>
+    <h2 class="sec-title">What's in Each Package</h2>
+    <div class="divider"></div>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>₦15k Starter</th>
+            <th>₦25k Pro</th>
+            <th>₦75k+ Private</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="4">Content & Learning</td></tr>
+          <tr><td>AMPISF Ebook</td><td class="check">✦</td><td class="check">✦</td><td class="check">✦</td></tr>
+          <tr><td>7 Pro Class Modules</td><td class="cross">—</td><td class="check">✦</td><td class="check">✦</td></tr>
+          <tr><td>WhatsApp Traffic System</td><td class="partial">Intro</td><td class="check">✦ Full</td><td class="check">✦ Full</td></tr>
+          <tr><td>Passive Income System Setup</td><td class="cross">—</td><td class="check">✦</td><td class="check">✦</td></tr>
+          <tr><td>30-Day Action Plan</td><td class="check">✦</td><td class="check">✦</td><td class="check">✦ Custom</td></tr>
+          <tr class="cat-row"><td colspan="4">Support & Access</td></tr>
+          <tr><td>Coaching Access</td><td class="partial">2-day bonus</td><td class="partial">Email access</td><td class="check">✦ Direct WhatsApp</td></tr>
+          <tr><td>Personalised Strategy</td><td class="cross">—</td><td class="cross">—</td><td class="check">✦</td></tr>
+          <tr><td>Profile & Account Review</td><td class="cross">—</td><td class="cross">—</td><td class="check">✦</td></tr>
+          <tr><td>Content Feedback</td><td class="cross">—</td><td class="cross">—</td><td class="check">✦</td></tr>
+          <tr><td>Weekly Check-in Calls</td><td class="cross">—</td><td class="cross">—</td><td class="check">✦</td></tr>
+          <tr class="cat-row"><td colspan="4">Delivery</td></tr>
+          <tr><td>Format</td><td>Instant download</td><td>Coaching delivery</td><td>Live sessions</td></tr>
+          <tr><td>Start</td><td>Immediately</td><td>Upon enrollment</td><td>Upon agreement</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" style="background:var(--dark2);padding-top:60px;padding-bottom:60px;">
+  <div class="wrap">
+    <div class="sec-eyebrow">Questions</div>
+    <h2 class="sec-title">Frequently Asked</h2>
+    <div class="divider"></div>
+    <div class="faq">
+
+      <div class="faq-item open">
+        <div class="faq-q">Which tier is right for me as a complete beginner?</div>
+        <div class="faq-a">Start with the ₦15,000 Starter — the AMPISF ebook gives you the full foundation plus 2 days of coaching access to ask questions. Once you understand the system, the Pro Class takes you to implementation and scaling.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between the ebook and the Pro Class?</div>
+        <div class="faq-a">The ebook (₦15k) is the AMPISF formula — your complete reference guide. The Pro Class (₦25k) is a coached experience with 7 live modules, email access to Islamiyat, and a step-by-step implementation system with accountability.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long is the early bird price for the Pro Class?</div>
+        <div class="faq-a">The ₦25,000 early bird price is available for the first 10 enrollees only. After that, the price returns to ₦30,000. Once those 10 spots are taken, the discount is gone permanently.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I pay and receive access?</div>
+        <div class="faq-a">The ₦15,000 ebook is purchased directly on Selar — you receive instant download access after payment. For the Pro Class and 1-on-1 coaching, click the enrollment link and payment details will be sent immediately.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade from the Starter to the Pro Class later?</div>
+        <div class="faq-a">Yes. If you start with the ₦15,000 ebook and want to upgrade to the Pro Class, DM Islamiyat on WhatsApp and an upgrade arrangement can be made.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Who is 1-on-1 private coaching for?</div>
+        <div class="faq-a">Private coaching is for people who want a fully personalised strategy — your niche, your accounts, your goals, your gaps. It includes direct WhatsApp access, weekly calls, content review, and everything built around you specifically.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-title">Still Have Questions?</div>
+  <div class="contact-sub">DM Islamiyat directly — she responds personally.</div>
+  <div class="contact-links">
+    <a href="https://wa.me/2349011480531" class="contact-link">💬 WhatsApp</a>
+    <a href="https://instagram.com/boluconverts" class="contact-link">📲 Instagram @boluconverts</a>
+    <a href="https://selar.com/552q24353g" class="contact-link">🛒 Buy on Selar</a>
+  </div>
+</div>
+
+<div style="height:70px;"></div>
+<div class="foot"><p>© 2026 Islamiyat Boluwatife · Certified Digital Marketer · @boluconverts</p></div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
